@@ -115,35 +115,24 @@ const scheduleBlocks = [
 
 const mapPlaces = [
   {
-    type: "住宿",
+    type: "學人會館",
     name: retreatInfo.hotelName,
     address: retreatInfo.hotelAddress,
     query: `${retreatInfo.hotelAddress} ${retreatInfo.hotelName}`,
-    note: "園區圖標示於學人會館 1F，靠近戶外休憩餐飲與市場。"
+    note: "住宿地點在園區圖上方，標示為學人會館 Scholars Residence。"
   },
   {
-    type: "會議",
+    type: "會議室",
     name: retreatInfo.meetingName,
     address: retreatInfo.meetingAddress,
     query: `${retreatInfo.meetingAddress} ${retreatInfo.meetingName}`,
-    note: "園區圖標示於研究大樓 1F，110 會議室。"
-  },
-  {
-    type: "交通",
-    name: "中研院南部院區大門",
-    address: "台南市歸仁區歸仁十三路一段100號",
-    query: "中央研究院南部院區",
-    note: "園區大門靠近高發二路，南部院區機車停車場免費。"
+    note: "主要會議地點在研究大樓 1F，園區圖下方標示 110 會議室。"
   }
 ];
 
 const campusSpots = [
-  { code: "7", title: "研究大樓 1F 110 會議室", text: "JAC retreat 主要會議地點。園區圖標示於研究大樓入口附近。", tags: ["會議"] },
-  { code: "16", title: "學人會館 1F", text: "住宿地點，鄰近一樓交誼廳、戶外休憩餐飲與市集。", tags: ["住宿"] },
-  { code: "1", title: "南部院區大門", text: "主入口位於高發二路側，進入後可依園區指標前往研究大樓。", tags: ["入口"] },
-  { code: "P", title: "南部院區機車停車場", text: "園區圖標示為免費機車停車場。", tags: ["交通"] },
-  { code: "Bus", title: "接駁車上下車處", text: "大門附近與園區道路旁皆有接駁車上下車處標示。", tags: ["交通"] },
-  { code: "14", title: "綜合大樓", text: "含南院服務處與人文社會研究基地，可作為園區辨識地標。", tags: ["地標"] }
+  { code: "7", title: "研究大樓 1F 110 會議室", text: "JAC retreat 主要會議地點。抵達南院後依園區指標前往研究大樓即可。", tags: ["會議"] },
+  { code: "16", title: "學人會館 1F", text: "住宿地點在園區圖上方，標示為 Scholars Residence。", tags: ["住宿"] }
 ];
 
 const trains = [
@@ -203,9 +192,7 @@ const facilities = [
   { title: "免費寬頻上網", text: "客房提供免費寬頻上網，建議需要報告者仍準備個人熱點備用。", tags: ["網路"] },
   { title: "客房設備", text: "備有小冰箱與 50 吋大電視。", tags: ["住宿"] },
   { title: "環保備品", text: "未提供一次性備品，請住宿人自行攜帶牙刷、梳子、刮鬍刀、浴帽及紙拖鞋。", tags: ["住宿"] },
-  { title: "會議地點", text: "地點為研究大樓 1F 會議室 110，請依園區圖從研究大樓入口前往。", tags: ["會議"] },
-  { title: "園區機能", text: "學人會館附近有戶外休憩餐飲、市集與綜合大樓，可作為集合與休息參考。", tags: ["生活"] },
-  { title: "停車資訊", text: "園區圖標示南部院區機車停車場免費，其他停車與接送請依現場規定。", tags: ["交通"] }
+  { title: "會議地點", text: "會議集中在研究大樓 1F 110 會議室，請依園區圖從研究大樓入口前往。", tags: ["會議"] }
 ];
 
 const state = {
@@ -268,7 +255,7 @@ function renderDay() {
   progressDot.style.left = `${percent}%`;
   dayCount.textContent = `Day ${state.activeDay + 1} / ${tripDays.length}`;
   planLocation.textContent = day.title;
-  selectedDayTitle.textContent = `D${state.activeDay + 1} 當日完整行程`;
+  selectedDayTitle.textContent = `Day ${state.activeDay + 1}`;
   todayPreview.innerHTML = day.items
     .map(item => renderCompactItem(item))
     .join("");

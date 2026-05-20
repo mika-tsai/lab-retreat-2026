@@ -220,19 +220,23 @@ h1 {
 }
 
 .hero-card {
-  min-height: 250px;
-  padding: clamp(24px, 5vw, 46px);
+  min-height: 330px;
+  padding: 0;
   margin-bottom: 18px;
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) 280px;
-  gap: 22px;
+  grid-template-columns: minmax(0, 1fr) minmax(250px, 330px);
+  gap: 0;
   position: relative;
   overflow: hidden;
+  background: #f8f7ef;
 }
 
 .hero-copy {
   position: relative;
   z-index: 1;
+  padding: clamp(26px, 5vw, 58px);
+  display: grid;
+  align-content: center;
 }
 
 .hero-copy p {
@@ -241,9 +245,9 @@ h1 {
 }
 
 .hero-copy h2 {
-  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-size: clamp(3.2rem, 9vw, 6.8rem);
   font-weight: 500;
-  line-height: 0.98;
+  line-height: 0.9;
   margin-bottom: 14px;
   max-width: 760px;
 }
@@ -258,7 +262,7 @@ h1 {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
-  margin-top: 26px;
+  margin-top: 34px;
   max-width: 700px;
 }
 
@@ -285,34 +289,75 @@ h1 {
 }
 
 .today-stamp {
-  align-self: center;
-  justify-self: start;
-  border: 2px dashed rgba(184, 86, 54, 0.48);
-  border-radius: 8px;
-  padding: 20px 22px;
-  background: rgba(255, 253, 248, 0.78);
+  align-self: stretch;
+  justify-self: stretch;
+  border: 0;
+  border-left: 1px solid rgba(55, 84, 74, 0.14);
+  border-radius: 0;
+  padding: clamp(24px, 4vw, 42px);
+  background: #202723;
+  color: #fffdf7;
   position: relative;
   z-index: 1;
+  display: grid;
+  align-content: center;
+  min-height: 100%;
 }
 
 .today-stamp strong {
   display: block;
-  font-size: 1.72rem;
+  font-size: clamp(2.1rem, 4.5vw, 3.5rem);
   font-weight: 500;
-  margin: 10px 0;
+  line-height: 0.95;
+  margin: 18px 0 16px;
+}
+
+.today-stamp span {
+  color: #d94d37;
+  font-size: 0.95rem;
+  font-style: normal;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.today-stamp::before {
+  content: "";
+  width: 52px;
+  height: 6px;
+  background: #d94d37;
+  position: absolute;
+  left: clamp(24px, 4vw, 42px);
+  top: clamp(24px, 4vw, 42px);
 }
 
 .today-stamp small {
   font-size: 1rem;
-  color: #56645d;
+  color: rgba(255, 253, 247, 0.74);
+  line-height: 1.55;
 }
 
-.hero-card img {
+.hero-plate {
   position: absolute;
-  right: -28px;
-  bottom: -28px;
-  width: min(34%, 260px);
-  opacity: 0.66;
+  right: 28px;
+  bottom: 22px;
+  z-index: 2;
+  color: rgba(255, 253, 247, 0.1);
+  display: grid;
+  justify-items: end;
+  line-height: 0.86;
+  pointer-events: none;
+}
+
+.hero-plate span {
+  font-size: clamp(3.5rem, 9vw, 6rem);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.hero-plate b {
+  font-size: clamp(1.1rem, 3vw, 2rem);
+  font-weight: 500;
+  letter-spacing: 0.12em;
 }
 
 .summary-card,
@@ -715,7 +760,7 @@ textarea {
 }
 
 .campus-grid {
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin-bottom: 18px;
 }
 
@@ -997,9 +1042,14 @@ textarea {
     min-height: 330px;
   }
 
-  .hero-card img {
-    width: 54%;
-    opacity: 0.78;
+  .today-stamp {
+    border-left: 0;
+    min-height: 220px;
+  }
+
+  .hero-plate {
+    right: 18px;
+    bottom: 18px;
   }
 
   .hero-facts {
