@@ -258,11 +258,38 @@ h1 {
   font-style: italic;
 }
 
+.registration-link {
+  width: min(100%, 430px);
+  min-height: 72px;
+  margin-top: 24px;
+  padding: 14px 18px;
+  display: grid;
+  gap: 6px;
+  border: 1px solid rgba(199, 111, 88, 0.42);
+  border-left: 6px solid var(--accent);
+  background: rgba(255, 253, 245, 0.72);
+  color: var(--dark);
+  text-decoration: none;
+}
+
+.registration-link span {
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-style: normal;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.registration-link strong {
+  font-size: 1.28rem;
+  font-weight: 500;
+}
+
 .hero-facts {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
-  margin-top: 34px;
+  margin-top: 28px;
   max-width: 700px;
 }
 
