@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JAC retreat｜6/8-6/10</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="kicker">Academia Sinica South Campus</p>
+          <h1>JAC retreat</h1>
+        </div>
+      </header>
+
+      <main>
+        <section class="date-strip" aria-label="活動日期">
+          <div class="date-cards" id="dateCards"></div>
+          <div class="day-progress">
+            <button class="round-button" type="button" id="prevDay" aria-label="前一天">‹</button>
+            <div class="progress-track">
+              <div class="progress-fill" id="progressFill"></div>
+              <span class="progress-dot" id="progressDot"></span>
+            </div>
+            <button class="round-button" type="button" id="nextDay" aria-label="後一天">›</button>
+          </div>
+          <p class="day-count" id="dayCount">Day 1 / 3</p>
+        </section>
+
+        <section class="hero-card">
+          <div class="hero-copy">
+            <p>6/8 MON - 6/10 WED · Tainan</p>
+            <h2>Retreat Field Guide</h2>
+            <span>Schedule, meals, lodging, transport, and campus map</span>
+            <div class="hero-facts" aria-label="Retreat 重要資訊">
+              <div>
+                <span>Meeting</span>
+                <strong>研究大樓 1F 110</strong>
+              </div>
+              <div>
+                <span>Stay</span>
+                <strong>學人會館</strong>
+              </div>
+              <div>
+                <span>Transit</span>
+                <strong>南港 / 台北出發</strong>
+              </div>
+            </div>
+          </div>
+          <div class="today-stamp">
+            <span>Today</span>
+            <strong id="stampDate">D1 6月8日</strong>
+            <small id="stampArea">中研院南院 · 研究大樓 110</small>
+          </div>
+          <img src="./assets/tainan-retreat.svg" alt="台南城市與會議插畫" />
+        </section>
+
+        <section class="summary-card">
+          <div class="section-title">
+            <h2 id="selectedDayTitle">當日完整行程</h2>
+            <button type="button" data-tab-jump="plans">查看完整表</button>
+          </div>
+          <div class="mini-list" id="todayPreview"></div>
+        </section>
+
+        <section class="summary-card meal-summary">
+          <div class="section-title">
+            <h2>訂餐表單</h2>
+            <button type="button" data-tab-jump="meals">查看三天</button>
+          </div>
+          <div class="meal-list compact" id="mealPreview"></div>
+        </section>
+
+        <section class="menu-grid" aria-label="攻略功能">
+          <article class="menu-card" data-tab-jump="plans">
+            <span class="menu-icon">▣</span>
+            <p>Schedule</p>
+            <h3>每日時程表</h3>
+            <small>集合、會議、用餐、自由時間</small>
+          </article>
+          <article class="menu-card" data-tab-jump="map">
+            <span class="menu-icon">⌖</span>
+            <p>Map</p>
+            <h3>南院地圖</h3>
+            <small>會議室、學人會館、大門</small>
+          </article>
+          <article class="menu-card" data-tab-jump="transport">
+            <span class="menu-icon">⇄</span>
+            <p>THSR</p>
+            <h3>高鐵參考</h3>
+            <small>南港/台北往台南</small>
+          </article>
+          <article class="menu-card" data-tab-jump="meals">
+            <span class="menu-icon">☰</span>
+            <p>Meal</p>
+            <h3>訂餐表單</h3>
+            <small>三天各一份 Google Form</small>
+          </article>
+          <article class="menu-card" data-tab-jump="lodging">
+            <span class="menu-icon">⌂</span>
+            <p>Stay</p>
+            <h3>住宿設施</h3>
+            <small>入住資訊、房務、公共空間</small>
+          </article>
+        </section>
+
+        <section class="panel active" id="plansPanel">
+          <div class="section-title">
+            <h2>每日時程表</h2>
+            <p id="planLocation">台南市區</p>
+          </div>
+          <div class="schedule-board" id="scheduleBoard"></div>
+          <div class="timeline" id="timeline"></div>
+          <label class="notes">
+            <span>補充筆記</span>
+            <textarea id="dayNote" placeholder="例如：集合負責人、餐廳訂位、分組名單、報告順序..."></textarea>
+          </label>
+        </section>
+
+        <section class="panel" id="mapPanel">
+          <div class="section-title">
+            <h2>中研院南院地圖</h2>
+            <p>會議室 110 與學人會館</p>
+          </div>
+          <div class="map-switch" id="mapSwitch"></div>
+          <figure class="campus-map">
+            <img src="./assets/south-campus-map-annotated-source.png" alt="中研院南院園區地圖，標示學人會館與研究大樓 110 會議室" />
+            <span class="map-ring residence"></span>
+            <span class="map-ring meeting"></span>
+            <figcaption class="map-label residence-label">學人會館</figcaption>
+            <figcaption class="map-label meeting-label">110 會議室</figcaption>
+          </figure>
+          <div class="campus-grid" id="campusGrid"></div>
+          <div class="map-card">
+            <div class="map-card-head">
+              <span>Google Maps</span>
+              <a id="googleMapLink" href="https://www.google.com/maps/search/?api=1&query=%E4%B8%AD%E5%A4%AE%E7%A0%94%E7%A9%B6%E9%99%A2%E5%8D%97%E9%83%A8%E9%99%A2%E5%8D%80" target="_blank" rel="noreferrer">在 Google Maps 開啟</a>
+            </div>
+            <iframe
+              id="googleMap"
+              title="Google Maps 中研院南院地圖"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=%E5%8F%B0%E5%8D%97%E5%B8%82&output=embed"
+            ></iframe>
+          </div>
+          <div class="map-meta" id="mapMeta"></div>
+        </section>
+
+        <section class="panel" id="transportPanel">
+          <div class="section-title">
+            <h2>高鐵班次參考</h2>
+            <p>2026/06/08 較晚班次截圖</p>
+          </div>
+          <div class="notice">
+            班次依你提供的資訊整理，供大家抓集合時間用。正式購票請以台灣高鐵官方查詢與訂票系統為準。
+          </div>
+          <div class="train-sections" id="trainList"></div>
+          <div class="source-row">
+            <a href="https://www.thsrc.com.tw/ArticleContent/a3b630bb-1066-4352-a1ef-58c7b4e8ef7c" target="_blank" rel="noreferrer">台灣高鐵官方時刻表與票價查詢</a>
+            <a href="https://wwwmt-thsrc.cdn.hinet.net/ArticleContent/9c5ac6ca-ec89-48f8-aab0-41b738cb1814" target="_blank" rel="noreferrer">高鐵台南站資訊</a>
+          </div>
+        </section>
+
+        <section class="panel" id="mealsPanel">
+          <div class="section-title">
+            <h2>每日訂餐表單</h2>
+            <p>請依日期填寫</p>
+          </div>
+          <div class="notice">
+            參加者請分別填寫三天的訂餐表單。表單連結補上後，下面的按鈕會直接開啟各日 Google Form。
+          </div>
+          <div class="meal-list" id="mealList"></div>
+        </section>
+
+        <section class="panel" id="lodgingPanel">
+          <div class="section-title">
+            <h2>學人會館住宿資訊</h2>
+            <p id="lodgingName">學人會館</p>
+          </div>
+          <div class="room-grid" id="roomList"></div>
+          <div class="info-grid" id="lodgingInfo"></div>
+          <div class="facility-grid" id="facilityList"></div>
+        </section>
+      </main>
+
+      <nav class="bottom-nav" aria-label="主選單">
+        <button class="nav-item active" type="button" data-tab="plans">
+          <span>▣</span>
+          <b>時程</b>
+        </button>
+        <button class="nav-item" type="button" data-tab="map">
+          <span>⌖</span>
+          <b>地圖</b>
+        </button>
+        <button class="home-button" type="button" data-tab="home" aria-label="首頁">
+          <span>⌂</span>
+        </button>
+        <button class="nav-item" type="button" data-tab="transport">
+          <span>⇄</span>
+          <b>高鐵</b>
+        </button>
+        <button class="nav-item" type="button" data-tab="meals">
+          <span>☰</span>
+          <b>訂餐</b>
+        </button>
+      </nav>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
