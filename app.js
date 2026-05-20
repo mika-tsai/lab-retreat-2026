@@ -205,8 +205,6 @@ const dateCards = document.querySelector("#dateCards");
 const progressFill = document.querySelector("#progressFill");
 const progressDot = document.querySelector("#progressDot");
 const dayCount = document.querySelector("#dayCount");
-const stampDate = document.querySelector("#stampDate");
-const stampArea = document.querySelector("#stampArea");
 const todayPreview = document.querySelector("#todayPreview");
 const selectedDayTitle = document.querySelector("#selectedDayTitle");
 const timeline = document.querySelector("#timeline");
@@ -262,65 +260,6 @@ function renderDay() {
   timeline.innerHTML = day.items.map(item => renderTimelineItem(item)).join("");
   dayNote.value = localStorage.getItem(day.noteKey) || "";
   renderDates();
-}
-
-function parseEventTime(dayIndex, timeText) {
-  const date = `2026-06-${String(8 + dayIndex).padStart(2, "0")}`;
-  const [startText, rawEndText] = timeText.split("-");
-  const endText = rawEndText || "";
-  const endFallback = dayIndex === tripDays.length - 1 ? "18:00" : "23:59";
-  const end = endText.trim() || endFallback;
-
-  return {
-    start: new Date(`${date}T${startText.trim()}:00+08:00`),
-    end: new Date(`${date}T${end.trim()}:00+08:00`)
-  };
-}
-
-function allScheduleEvents() {
-  return tripDays.flatMap((day, dayIndex) =>
-    day.items.map(item => {
-      const range = parseEventTime(dayIndex, item.time);
-      return {
-        ...item,
-        dayIndex,
-        dayLabel: `D${dayIndex + 1} 6月${day.date}日`,
-        start: range.start,
-        end: range.end
-      };
-    })
-  ).sort((a, b) => a.start - b.start);
-}
-
-function formatEventStatus(event, now) {
-  if (now >= event.start && now < event.end) return "進行中";
-  return event.start.toLocaleString("zh-TW", {
-    month: "numeric",
-    day: "numeric",
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false
-  });
-}
-
-function updateLiveAgenda() {
-  const now = new Date();
-  const events = allScheduleEvents();
-  const active = events.find(event => now >= event.start && now < event.end);
-  const upcoming = events.filter(event => event.end > now);
-  const focusEvents = active
-    ? [active, ...events.filter(event => event.start >= active.end).slice(0, 3)]
-    : upcoming.slice(0, 4);
-
-  if (!focusEvents.length) {
-    stampDate.textContent = "Retreat 結束";
-    stampArea.textContent = "行程已完成";
-    return;
-  }
-
-  const first = focusEvents[0];
-  stampDate.textContent = active ? "現在進行中" : first.dayLabel;
-  stampArea.textContent = `${first.time} · ${first.title}`;
 }
 
 function renderCompactItem(item) {
@@ -584,5 +523,3 @@ renderCampus();
 renderTrains();
 renderMealForms();
 renderLodging();
-updateLiveAgenda();
-setInterval(updateLiveAgenda, 60 * 1000);
