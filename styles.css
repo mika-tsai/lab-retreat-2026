@@ -1,13 +1,13 @@
 :root {
-  --bg: #edf0e7;
-  --paper: #fffdf7;
-  --paper-soft: #f5f0e6;
-  --ink: #26302c;
-  --muted: #6d766f;
-  --line: #d8d5c8;
-  --accent: #b85636;
-  --dark: #1f3b35;
-  --green: #547a64;
+  --bg: #eef1e8;
+  --paper: #fffdf5;
+  --paper-soft: #f3efe4;
+  --ink: #24302a;
+  --muted: #707970;
+  --line: #d8d7ca;
+  --accent: #c76f58;
+  --dark: #1f2c26;
+  --green: #587568;
   --blue: #426b88;
   --gold: #b48a3f;
   --shadow: 0 12px 28px rgba(32, 50, 43, 0.1);
@@ -23,7 +23,7 @@ body {
   color: var(--ink);
   background:
     linear-gradient(140deg, rgba(255, 255, 255, 0.62), transparent 34rem),
-    linear-gradient(180deg, #e6ece4 0%, var(--bg) 52%, #f7efe4 100%);
+    linear-gradient(180deg, #e7ede5 0%, var(--bg) 52%, #f8f2e8 100%);
   font-family: "Times New Roman", "Noto Serif TC", "PingFang TC", serif;
 }
 
@@ -295,7 +295,9 @@ h1 {
   border-left: 1px solid rgba(55, 84, 74, 0.14);
   border-radius: 0;
   padding: clamp(24px, 4vw, 42px);
-  background: #202723;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 40%),
+    #1f2c26;
   color: #fffdf7;
   position: relative;
   z-index: 1;
@@ -313,7 +315,7 @@ h1 {
 }
 
 .today-stamp span {
-  color: #d94d37;
+  color: #d88a72;
   font-size: 0.95rem;
   font-style: normal;
   letter-spacing: 0.18em;
@@ -324,7 +326,7 @@ h1 {
   content: "";
   width: 52px;
   height: 6px;
-  background: #d94d37;
+  background: #d88a72;
   position: absolute;
   left: clamp(24px, 4vw, 42px);
   top: clamp(24px, 4vw, 42px);
@@ -332,7 +334,7 @@ h1 {
 
 .today-stamp small {
   font-size: 1rem;
-  color: rgba(255, 253, 247, 0.74);
+  color: rgba(255, 253, 247, 0.72);
   line-height: 1.55;
 }
 
@@ -341,7 +343,7 @@ h1 {
   right: 28px;
   bottom: 22px;
   z-index: 2;
-  color: rgba(255, 253, 247, 0.1);
+  color: rgba(255, 253, 247, 0.09);
   display: grid;
   justify-items: end;
   line-height: 0.86;
@@ -680,7 +682,7 @@ textarea {
 }
 
 .map-ring {
-  border: 5px solid #d94727;
+  border: 5px solid var(--accent);
   border-radius: 8px;
   box-shadow:
     0 0 0 4px rgba(255, 253, 247, 0.86),
@@ -707,7 +709,7 @@ textarea {
   place-items: center;
   border-radius: 99px;
   padding: 6px 14px;
-  background: #d94727;
+  background: var(--accent);
   color: #fffdf7;
   font-size: 1rem;
   box-shadow: 0 10px 22px rgba(45, 31, 24, 0.18);
