@@ -886,8 +886,8 @@ textarea {
 
 .activity-feature {
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
-  min-height: 500px;
+  grid-template-columns: minmax(260px, 380px) minmax(0, 1fr);
+  min-height: 620px;
   border: 1px solid rgba(55, 84, 74, 0.13);
   border-radius: 8px;
   overflow: hidden;
@@ -896,10 +896,9 @@ textarea {
 }
 
 .activity-image {
-  min-height: 500px;
+  min-height: 620px;
   background:
-    linear-gradient(90deg, rgba(0, 0, 0, 0), rgba(31, 44, 38, 0.12)),
-    url("./assets/pharaoh-activity.png") center / contain no-repeat,
+    url("./assets/pharaoh-poster.jpg") center / contain no-repeat,
     #050505;
 }
 
@@ -1361,7 +1360,7 @@ textarea {
   }
 
   .activity-image {
-    min-height: 220px;
+    min-height: 420px;
     background-size: contain;
   }
 
