@@ -482,6 +482,10 @@ function setTab(tab) {
   });
 }
 
+function closeMobileMenu() {
+  document.querySelector(".mobile-menu")?.removeAttribute("open");
+}
+
 document.addEventListener("click", event => {
   const dayButton = event.target.closest("[data-day]");
   if (dayButton) {
@@ -490,10 +494,16 @@ document.addEventListener("click", event => {
   }
 
   const tabButton = event.target.closest("[data-tab]");
-  if (tabButton) setTab(tabButton.dataset.tab);
+  if (tabButton) {
+    setTab(tabButton.dataset.tab);
+    closeMobileMenu();
+  }
 
   const jumpButton = event.target.closest("[data-tab-jump]");
-  if (jumpButton) setTab(jumpButton.dataset.tabJump);
+  if (jumpButton) {
+    setTab(jumpButton.dataset.tabJump);
+    closeMobileMenu();
+  }
 
   const mapButton = event.target.closest("[data-map]");
   if (mapButton) {

@@ -604,6 +604,10 @@ h1 {
   margin-bottom: 26px;
 }
 
+.mobile-menu {
+  display: none;
+}
+
 .menu-card {
   min-height: 150px;
   padding: 20px;
@@ -1289,12 +1293,95 @@ textarea {
     grid-template-columns: 1fr;
   }
 
+  .mobile-menu {
+    display: block;
+    position: relative;
+    margin-bottom: 18px;
+    z-index: 8;
+  }
+
+  .mobile-menu summary {
+    width: 100%;
+    min-height: 56px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(55, 84, 74, 0.13);
+    border-radius: 99px;
+    background: var(--dark);
+    color: #fffdf7;
+    box-shadow: var(--shadow);
+    padding: 0 20px;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .mobile-menu summary::after {
+    content: "+";
+    font-size: 1.35rem;
+  }
+
+  .mobile-menu summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .mobile-menu[open] summary::after,
+  .mobile-menu:hover summary::after {
+    content: "-";
+  }
+
+  .mobile-menu[open] + .menu-grid,
+  .mobile-menu:hover + .menu-grid,
+  .menu-grid:hover {
+    display: grid;
+  }
+
+  .menu-grid {
+    display: none;
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    z-index: 9;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: -8px;
+    margin-bottom: 0;
+    padding: 10px;
+    border: 1px solid rgba(55, 84, 74, 0.13);
+    border-radius: 18px;
+    background: rgba(255, 253, 247, 0.98);
+    box-shadow: var(--shadow);
+  }
+
   .schedule-board {
     display: none;
   }
 
   .menu-card {
     min-height: auto;
+    display: grid;
+    grid-template-columns: 42px 1fr;
+    column-gap: 12px;
+    align-items: center;
+    padding: 12px;
+    box-shadow: none;
+  }
+
+  .menu-icon {
+    width: 42px;
+    height: 42px;
+    margin-bottom: 0;
+    grid-row: span 3;
+  }
+
+  .menu-card h3 {
+    font-size: 1.08rem;
+    margin: 0;
+  }
+
+  .menu-card p,
+  .menu-card small {
+    font-size: 0.86rem;
   }
 
   .summary-card,
