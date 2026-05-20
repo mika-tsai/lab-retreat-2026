@@ -961,15 +961,22 @@ textarea {
 .activity-backups summary {
   min-height: 54px;
   display: inline-flex;
-  align-items: baseline;
-  gap: 12px;
-  border: 1px solid rgba(55, 84, 74, 0.13);
+  align-items: center;
+  gap: 10px;
+  border: 1px solid rgba(199, 111, 88, 0.38);
   border-radius: 99px;
-  background: rgba(255, 253, 247, 0.78);
+  background: var(--dark);
   box-shadow: var(--shadow);
-  padding: 12px 18px;
+  padding: 0 22px;
   cursor: pointer;
   list-style: none;
+}
+
+.activity-backups summary::after {
+  content: "+";
+  color: #fffdf7;
+  font-size: 1.25rem;
+  line-height: 1;
 }
 
 .activity-backups summary::-webkit-details-marker {
@@ -977,23 +984,17 @@ textarea {
 }
 
 .activity-backups summary span {
-  color: var(--dark);
-  font-size: 1.2rem;
-}
-
-.activity-backups summary small {
-  color: var(--muted);
-  font-style: italic;
+  color: #fffdf7;
+  font-size: 1.08rem;
 }
 
 .activity-backups[open] summary {
   margin-bottom: 14px;
-  background: var(--dark);
+  background: var(--accent);
 }
 
-.activity-backups[open] summary span,
-.activity-backups[open] summary small {
-  color: #fffdf7;
+.activity-backups[open] summary::after {
+  content: "-";
 }
 
 .backup-grid {
