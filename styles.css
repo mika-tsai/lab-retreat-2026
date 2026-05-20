@@ -1029,22 +1029,66 @@ textarea {
 }
 
 @media (max-width: 760px) {
+  body {
+    overflow-x: hidden;
+  }
+
   .app-shell {
-    padding-inline: 16px;
+    padding: 18px 14px 104px;
   }
 
   .topbar {
     align-items: flex-start;
   }
 
+  .kicker {
+    font-size: 0.92rem;
+  }
+
+  h1 {
+    font-size: clamp(2.4rem, 13vw, 4rem);
+  }
+
+  .date-cards {
+    grid-auto-columns: minmax(96px, 1fr);
+    gap: 8px;
+  }
+
+  .date-card {
+    min-height: 84px;
+    padding: 12px 6px;
+  }
+
+  .date-card strong {
+    font-size: 1.65rem;
+  }
+
+  .day-progress {
+    grid-template-columns: 44px 1fr 44px;
+    gap: 12px;
+  }
+
+  .round-button {
+    width: 44px;
+    height: 44px;
+  }
+
   .hero-card {
     grid-template-columns: 1fr;
-    min-height: 330px;
+    min-height: auto;
+  }
+
+  .hero-copy {
+    padding: 28px 22px;
+  }
+
+  .hero-copy h2 {
+    font-size: clamp(3.2rem, 20vw, 4.8rem);
   }
 
   .today-stamp {
     border-left: 0;
-    min-height: 220px;
+    min-height: 190px;
   }
 
   .hero-plate {
@@ -1059,26 +1103,99 @@ textarea {
 
   .menu-grid,
   .map-meta,
+  .campus-grid,
+  .transport-grid,
+  .info-grid,
+  .room-grid,
+  .facility-grid,
   .meal-list.compact {
     grid-template-columns: 1fr;
   }
 
   .schedule-board {
-    grid-template-columns: 104px repeat(3, 168px);
-    margin-inline: -2px;
+    display: none;
   }
 
   .menu-card {
     min-height: auto;
   }
 
+  .summary-card,
+  .panel {
+    padding: 18px;
+  }
+
+  .section-title {
+    align-items: flex-start;
+  }
+
+  .section-title h2 {
+    font-size: 1.8rem;
+  }
+
   .mini-item,
   .timeline-item {
-    grid-template-columns: 76px 1fr;
+    grid-template-columns: 1fr;
     gap: 12px;
+    padding: 16px 0;
+  }
+
+  .time {
+    font-size: 1.08rem;
   }
 
   .map-card iframe {
     min-height: 360px;
+  }
+
+  .map-ring {
+    border-width: 3px;
+    box-shadow: 0 0 0 2px rgba(255, 253, 247, 0.86);
+  }
+
+  .map-label {
+    min-height: 28px;
+    padding: 4px 10px;
+    font-size: 0.78rem;
+  }
+
+  .campus-card {
+    grid-template-columns: 44px 1fr;
+  }
+
+  .spot-code {
+    width: 44px;
+    height: 44px;
+  }
+
+  .train-section,
+  .train-card,
+  .meal-card,
+  .room-card,
+  .info-item,
+  .facility-card,
+  .campus-card {
+    padding: 16px;
+  }
+
+  .bottom-nav {
+    width: calc(100% - 18px);
+    bottom: 10px;
+    min-height: 64px;
+    grid-template-columns: 1fr 1fr 64px 1fr 1fr;
+  }
+
+  .nav-item,
+  .home-button {
+    min-height: 50px;
+  }
+
+  .home-button {
+    width: 54px;
+    height: 54px;
+  }
+
+  .nav-item b {
+    font-size: 0.78rem;
   }
 }
