@@ -22,7 +22,6 @@ const tripDays = [
     area: "台北 to Tainan · 研究大樓 110",
     city: "中研院南院",
     mapQuery: "中研院南部院區 研究大樓 110",
-    noteKey: "tainan-retreat-note-d1",
     items: [
       { time: "08:30-10:00", title: "Taipei to Tainan", place: "建議搭乘上午高鐵抵達台南", tags: ["交通"] },
       { time: "10:00-12:30", title: "Eunice", place: retreatInfo.meetingName, tags: ["會議"] },
@@ -42,7 +41,6 @@ const tripDays = [
     area: "YaPing · Lung · MengTing · Lab Activity",
     city: "研究大樓 110",
     mapQuery: "中研院南部院區 研究大樓 110",
-    noteKey: "tainan-retreat-note-d2",
     items: [
       { time: "08:30-10:00", title: "YaPing", place: retreatInfo.meetingName, tags: ["會議"] },
       { time: "10:00-11:00", title: "Lung", place: retreatInfo.meetingName, tags: ["會議"] },
@@ -61,7 +59,6 @@ const tripDays = [
     area: "YuYing · Charleen · Meg3 · JAC · Go Home",
     city: "研究大樓 110",
     mapQuery: "中研院南部院區 研究大樓 110",
-    noteKey: "tainan-retreat-note-d3",
     items: [
       { time: "08:30-10:00", title: "YuYing", place: retreatInfo.meetingName, tags: ["會議"] },
       { time: "10:00-11:00", title: "Charleen", place: retreatInfo.meetingName, tags: ["會議"] },
@@ -216,7 +213,6 @@ const todayPreview = document.querySelector("#todayPreview");
 const selectedDayTitle = document.querySelector("#selectedDayTitle");
 const timeline = document.querySelector("#timeline");
 const planLocation = document.querySelector("#planLocation");
-const dayNote = document.querySelector("#dayNote");
 const googleMap = document.querySelector("#googleMap");
 const mapSwitch = document.querySelector("#mapSwitch");
 const mapMeta = document.querySelector("#mapMeta");
@@ -231,22 +227,6 @@ const roomList = document.querySelector("#roomList");
 const mealList = document.querySelector("#mealList");
 const mealPreview = document.querySelector("#mealPreview");
 const mealSummary = document.querySelector("#mealSummary");
-
-function getSavedNote(key) {
-  try {
-    return localStorage.getItem(key) || "";
-  } catch (error) {
-    return "";
-  }
-}
-
-function saveDayNote(key, value) {
-  try {
-    localStorage.setItem(key, value);
-  } catch (error) {
-    // Notes stay editable even when a local file page cannot persist storage.
-  }
-}
 
 function tagClass(tag) {
   if (["早餐", "午餐", "晚餐", "餐飲"].includes(tag)) return "food";
@@ -282,7 +262,6 @@ function renderDay() {
     .map(item => renderCompactItem(item))
     .join("");
   timeline.innerHTML = day.items.map(item => renderTimelineItem(item)).join("");
-  dayNote.value = getSavedNote(day.noteKey);
   renderDates();
 }
 
@@ -582,10 +561,6 @@ document.querySelector("#prevDay").addEventListener("click", () => {
 document.querySelector("#nextDay").addEventListener("click", () => {
   state.activeDay = Math.min(tripDays.length - 1, state.activeDay + 1);
   renderDay();
-});
-
-dayNote.addEventListener("input", () => {
-  saveDayNote(tripDays[state.activeDay].noteKey, dayNote.value);
 });
 
 renderDay();

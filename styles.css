@@ -27,8 +27,7 @@ body {
   font-family: "Times New Roman", "Noto Serif TC", "PingFang TC", serif;
 }
 
-button,
-textarea {
+button {
   font: inherit;
 }
 
@@ -607,30 +606,6 @@ h1 {
   display: block;
 }
 
-.notes {
-  display: block;
-  margin-top: 20px;
-  border-left: 3px dashed rgba(184, 86, 54, 0.38);
-  padding: 18px 0 0 18px;
-}
-
-.notes span {
-  display: block;
-  font-size: 1.32rem;
-  margin-bottom: 12px;
-}
-
-textarea {
-  width: 100%;
-  min-height: 120px;
-  resize: vertical;
-  border: 0;
-  border-radius: 8px;
-  background: rgba(226, 231, 219, 0.56);
-  padding: 18px;
-  color: var(--ink);
-}
-
 .map-switch {
   display: flex;
   flex-wrap: wrap;
@@ -856,15 +831,11 @@ textarea {
   margin-top: 7px;
 }
 
-.wish-card a {
+.wish-card .wish-action {
   min-height: 44px;
   flex: 0 0 auto;
-  display: inline-grid;
-  place-items: center;
   border-radius: 8px;
   background: var(--dark);
-  color: #fffdf7;
-  text-decoration: none;
   padding: 0 18px;
 }
 
