@@ -261,7 +261,17 @@ function renderDay() {
   todayPreview.innerHTML = day.items
     .map(item => renderCompactItem(item))
     .join("");
-  timeline.innerHTML = day.items.map(item => renderTimelineItem(item)).join("");
+  timeline.innerHTML = tripDays
+    .map((timelineDay, index) => `
+      <section class="timeline-day${index === state.activeDay ? " active" : ""}" aria-label="Day ${index + 1} 完整行程">
+        <header>
+          <span>Day ${index + 1}</span>
+          <strong>${timelineDay.month.replace("月", "")}/${timelineDay.date} ${timelineDay.weekday}</strong>
+        </header>
+        ${timelineDay.items.map(item => renderTimelineItem(item)).join("")}
+      </section>
+    `)
+    .join("");
   renderDates();
 }
 
@@ -502,8 +512,10 @@ function setTab(tab) {
 function setNavMenu(open) {
   const menu = document.querySelector(".nav-menu");
   const toggle = document.querySelector("#menuToggle");
+  const mobileToggle = document.querySelector("#mobileMenuToggle");
   menu?.classList.toggle("open", open);
   toggle?.setAttribute("aria-expanded", String(open));
+  mobileToggle?.setAttribute("aria-expanded", String(open));
 
   if (!open && menu?.contains(document.activeElement)) {
     document.activeElement.blur();
@@ -511,18 +523,17 @@ function setNavMenu(open) {
 }
 
 document.addEventListener("click", event => {
+  const mobileMenuToggle = event.target.closest("#mobileMenuToggle");
+  if (mobileMenuToggle) {
+    const navMenu = document.querySelector(".nav-menu");
+    setNavMenu(!navMenu.classList.contains("open"));
+    return;
+  }
+
   const menuToggle = event.target.closest("#menuToggle");
   if (menuToggle) {
-    const navMenu = menuToggle.closest(".nav-menu");
-    const desktopHoverMenu = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-
-    if (desktopHoverMenu) {
-      setTab("home");
-      setNavMenu(false);
-      return;
-    }
-
-    setNavMenu(!navMenu.classList.contains("open"));
+    setTab("home");
+    setNavMenu(false);
     return;
   }
 
@@ -550,7 +561,7 @@ document.addEventListener("click", event => {
     renderMap();
   }
 
-  if (!event.target.closest(".nav-menu")) setNavMenu(false);
+  if (!event.target.closest(".nav-menu") && !event.target.closest("#mobileMenuToggle")) setNavMenu(false);
 });
 
 document.querySelector("#prevDay").addEventListener("click", () => {

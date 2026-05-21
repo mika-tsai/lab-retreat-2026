@@ -55,6 +55,10 @@ a {
   margin-bottom: 18px;
 }
 
+.mobile-nav-toggle {
+  display: none;
+}
+
 .kicker,
 .day-count,
 .section-title p,
@@ -423,6 +427,18 @@ h1 {
 .meal-list {
   display: grid;
   gap: 14px;
+}
+
+.timeline-day {
+  display: none;
+}
+
+.timeline-day.active {
+  display: block;
+}
+
+.timeline-day header {
+  display: none;
 }
 
 .mini-item,
@@ -1298,6 +1314,27 @@ h1 {
     align-items: flex-start;
   }
 
+  .mobile-nav-toggle {
+    width: 48px;
+    height: 48px;
+    border: 1px solid rgba(55, 84, 74, 0.14);
+    border-radius: 8px;
+    background: rgba(255, 253, 247, 0.88);
+    color: var(--dark);
+    display: grid;
+    align-content: center;
+    justify-items: center;
+    gap: 5px;
+    flex: 0 0 auto;
+    box-shadow: var(--shadow);
+  }
+
+  .mobile-nav-toggle span {
+    width: 21px;
+    height: 2px;
+    background: currentColor;
+  }
+
   .kicker {
     font-size: 0.92rem;
   }
@@ -1375,6 +1412,53 @@ h1 {
 
   .schedule-board {
     display: none;
+  }
+
+  .timeline {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 100%;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .timeline::-webkit-scrollbar {
+    display: none;
+  }
+
+  .timeline-day,
+  .timeline-day.active {
+    display: block;
+    min-width: 0;
+    scroll-snap-align: start;
+    border: 1px solid rgba(55, 84, 74, 0.13);
+    border-radius: 8px;
+    background: rgba(255, 253, 247, 0.68);
+    padding: 14px 16px;
+  }
+
+  .timeline-day header {
+    min-height: 44px;
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    border-bottom: 1px solid rgba(55, 84, 74, 0.14);
+    padding-bottom: 12px;
+    margin-bottom: 4px;
+  }
+
+  .timeline-day header span {
+    color: var(--accent);
+    font-style: italic;
+    letter-spacing: 0.1em;
+  }
+
+  .timeline-day header strong {
+    color: var(--dark);
+    font-weight: 500;
   }
 
   .summary-card,
@@ -1477,11 +1561,31 @@ h1 {
   }
 
   .nav-flyout {
-    width: calc(100vw - 34px);
-    bottom: 58px;
+    position: fixed;
+    inset: 76px 14px auto;
+    width: auto;
+    bottom: auto;
+    left: auto;
     grid-template-columns: 1fr;
     max-height: min(64vh, 450px);
     overflow-y: auto;
+    transform: translateY(-10px);
+    z-index: 15;
+  }
+
+  .nav-menu:hover .nav-flyout,
+  .nav-menu:focus-within .nav-flyout {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-10px);
+  }
+
+  .nav-menu.open .nav-flyout {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0);
   }
 
   .nav-item b {
