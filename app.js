@@ -6,6 +6,13 @@ const retreatInfo = {
   organizerNote: "請大家出發前確認高鐵車票、住宿房型、報告檔案與個人物品。"
 };
 
+const daXiangMapUrl = "https://www.google.com/maps/place/%E5%A4%A7%E7%BF%94%E7%87%92%E8%87%98/@22.9105316,120.2676145,17z/data=!3m1!4b1!4m6!3m5!1s0x346e736db91b778d:0x7fc9950be9b1882!8m2!3d22.9105267!4d120.2701894!16s%2Fg%2F11b6hfw7tv?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D";
+const garlicRiceMapUrl = "https://www.google.com/maps/place/%E8%92%9C%E9%A0%AD%E9%A3%AF/@22.9105267,120.2701894,17z/data=!4m6!3m5!1s0x346e736da593c5ef:0xe809cd9f3222debb!8m2!3d22.9102081!4d120.2709708!16s%2Fg%2F1hcbh3gc9?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D";
+const isCafeMapUrl = "https://www.google.com/maps/place/I's+Cafe%26Food%2F%E6%97%A9%E5%8D%88%E6%99%9A%E9%A4%90%2F%E9%8D%8B%E7%87%92%2F%E9%A3%AF/@22.9248579,120.2902701,17z/data=!3m1!4b1!4m6!3m5!1s0x346e73cadf7d622d:0x393e997c79a8d5df!8m2!3d22.9248579!4d120.2902701!16s%2Fg%2F11xd0pmzkt?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D";
+const jieShiYiMapUrl = "https://www.google.com/maps/place/%E6%8D%B7%E9%A3%9F%E8%97%9D/@22.9380204,120.2275708,17z/data=!3m1!4b1!4m6!3m5!1s0x346e75abb845512f:0xa9189e710da3be9c!8m2!3d22.9380155!4d120.2301457!16s%2Fg%2F11t3wc_4yg?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D";
+const lingSanMapUrl = "https://www.google.com/maps/place/%E6%BE%AA%E4%B8%89%E9%85%92%E9%A3%9F/data=!4m2!3m1!1s0x346e77fbb21d35fb:0x72c054153b5b91a2?sa=X&ved=1t:242&ictx=111";
+const haoBaoMapUrl = "https://www.google.com/maps/place/%E5%A5%BD%E5%AF%B6%E5%A5%BD%E9%A3%9F+The+Fabulous+%2F%E6%A4%AC%E5%BC%8F%E6%84%9F%EF%BD%9C%E6%AD%B8%E4%BB%81%E5%81%A5%E5%BA%B7%E9%A4%90%E7%9B%92%EF%BC%8E%E6%8A%93%E5%91%A8%E6%B4%BE%E5%B0%8D%EF%BC%8E%E8%BC%95%E9%A3%9F%E5%A4%96%E7%87%B4/@22.9266123,120.2938902,17z/data=!3m1!4b1!4m6!3m5!1s0x346e73270771f669:0xef5076fc015ba829!8m2!3d22.9266074!4d120.2964651!16s%2Fg%2F11t7h6_fm4?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D";
+
 const tripDays = [
   {
     weekday: "MON",
@@ -19,12 +26,12 @@ const tripDays = [
     items: [
       { time: "08:30-10:00", title: "Taipei to Tainan", place: "建議搭乘上午高鐵抵達台南", tags: ["交通"] },
       { time: "10:00-12:30", title: "Eunice", place: retreatInfo.meetingName, tags: ["會議"] },
-      { time: "12:30-13:00", title: "Lunch", place: "午餐", tags: ["午餐"] },
+      { time: "12:30-13:00", title: "Lunch：大翔燒臘", place: "午餐", url: daXiangMapUrl, tags: ["午餐"] },
       { time: "13:00-15:30", title: "YuFu", place: retreatInfo.meetingName, tags: ["會議"] },
       { time: "15:30-15:40", title: "10min Break", place: "短暫休息", tags: ["休息"] },
       { time: "15:40-17:00", title: "JD", place: retreatInfo.meetingName, tags: ["會議"] },
       { time: "17:00-18:00", title: "Free time", place: "自由時間", tags: ["自由"] },
-      { time: "18:00-21:00", title: "Dinner and discussion/leisure", place: "晚餐與討論 / leisure", tags: ["晚餐", "交流"] }
+      { time: "18:00-21:00", title: "Dinner：蒜頭飯", place: "晚餐與討論 / leisure", url: garlicRiceMapUrl, tags: ["晚餐", "交流"] }
     ]
   },
   {
@@ -40,9 +47,9 @@ const tripDays = [
       { time: "08:30-10:00", title: "YaPing", place: retreatInfo.meetingName, tags: ["會議"] },
       { time: "10:00-11:00", title: "Lung", place: retreatInfo.meetingName, tags: ["會議"] },
       { time: "11:00-12:00", title: "MengTing", place: retreatInfo.meetingName, tags: ["會議"] },
-      { time: "12:00-13:00", title: "Lunch：捷食藝", place: "午餐", tags: ["午餐"] },
+      { time: "12:00-13:00", title: "Lunch：捷食藝", place: "午餐", url: jieShiYiMapUrl, tags: ["午餐"] },
       { time: "13:00-18:00", title: "Lab Activity", place: "實驗室活動", tags: ["活動"] },
-      { time: "18:00-21:00", title: "Dinner：澄三酒食", place: "晚餐", tags: ["晚餐"] },
+      { time: "18:00-21:00", title: "Dinner：澪三酒食", place: "晚餐", url: lingSanMapUrl, tags: ["晚餐"] },
       { time: "21:00-", title: "Free time", place: "自由時間", tags: ["自由"] }
     ]
   },
@@ -59,7 +66,7 @@ const tripDays = [
       { time: "08:30-10:00", title: "YuYing", place: retreatInfo.meetingName, tags: ["會議"] },
       { time: "10:00-11:00", title: "Charleen", place: retreatInfo.meetingName, tags: ["會議"] },
       { time: "11:00-12:00", title: "Meg3", place: retreatInfo.meetingName, tags: ["會議"] },
-      { time: "12:00-13:00", title: "Lunch", place: "午餐", tags: ["午餐"] },
+      { time: "12:00-13:00", title: "Lunch：好寶好食 The Fabulous / 椬式感", place: "午餐", url: haoBaoMapUrl, tags: ["午餐"] },
       { time: "13:00-15:30", title: "JAC", place: retreatInfo.meetingName, tags: ["會議"] },
       { time: "15:30-", title: "Go Home", place: "返程", tags: ["交通"] }
     ]
@@ -92,23 +99,23 @@ const scheduleColumns = [
 const scheduleBlocks = [
   { day: 0, start: 1, end: 3, title: "Taipei to Tainan", detail: "北部出發，前往台南", tone: "traffic" },
   { day: 0, start: 3, end: 6, title: "Eunice", detail: "研究大樓 1F 110 會議室", tone: "work" },
-  { day: 0, start: 6, end: 7, title: "Lunch", detail: "午餐", tone: "food" },
+  { day: 0, start: 6, end: 7, title: "Lunch：大翔燒臘", detail: "午餐", url: daXiangMapUrl, tone: "food" },
   { day: 0, start: 7, end: 10, title: "YuFu", detail: "研究大樓 1F 110 會議室", tone: "work" },
   { day: 0, start: 10, end: 11, title: "10min Break", detail: "15:30-15:40", tone: "rest" },
   { day: 0, start: 11, end: 12, title: "JD", detail: "15:40-17:00 · 研究大樓 110", tone: "work" },
   { day: 0, start: 12, end: 13, title: "Free time", detail: "自由時間", tone: "rest" },
-  { day: 0, start: 13, end: 15, title: "Dinner and discussion/leisure", detail: "晚餐、討論與休閒", tone: "food" },
+  { day: 0, start: 13, end: 15, title: "Dinner：蒜頭飯", detail: "晚餐、討論與休閒", url: garlicRiceMapUrl, tone: "food" },
   { day: 1, start: 1, end: 3, title: "YaPing", detail: "研究大樓 1F 110 會議室", tone: "work" },
   { day: 1, start: 3, end: 4, title: "Lung", detail: "研究大樓 1F 110 會議室", tone: "work" },
   { day: 1, start: 4, end: 5, title: "MengTing", detail: "研究大樓 1F 110 會議室", tone: "work" },
-  { day: 1, start: 5, end: 7, title: "Lunch：捷食藝", detail: "午餐", tone: "food" },
+  { day: 1, start: 5, end: 7, title: "Lunch：捷食藝", detail: "午餐", url: jieShiYiMapUrl, tone: "food" },
   { day: 1, start: 7, end: 13, title: "Lab Activity", detail: "實驗室活動", tone: "activity" },
-  { day: 1, start: 13, end: 14, title: "Dinner：澄三酒食", detail: "晚餐", tone: "food" },
+  { day: 1, start: 13, end: 14, title: "Dinner：澪三酒食", detail: "晚餐", url: lingSanMapUrl, tone: "food" },
   { day: 1, start: 14, end: 15, title: "Free time", detail: "自由時間", tone: "rest" },
   { day: 2, start: 1, end: 3, title: "YuYing", detail: "研究大樓 1F 110 會議室", tone: "work" },
   { day: 2, start: 3, end: 4, title: "Charleen", detail: "研究大樓 1F 110 會議室", tone: "work" },
   { day: 2, start: 4, end: 5, title: "Meg3", detail: "研究大樓 1F 110 會議室", tone: "work" },
-  { day: 2, start: 5, end: 7, title: "Lunch", detail: "午餐", tone: "food" },
+  { day: 2, start: 5, end: 7, title: "Lunch：好寶好食 The Fabulous / 椬式感", detail: "午餐", url: haoBaoMapUrl, tone: "food" },
   { day: 2, start: 7, end: 10, title: "JAC", detail: "研究大樓 1F 110 會議室", tone: "work" },
   { day: 2, start: 10, end: 15, title: "Go Home", detail: "返程", tone: "traffic" }
 ];
@@ -162,19 +169,19 @@ const mealForms = [
   {
     day: "6/8 Mon.",
     title: "Day 1 訂餐表單",
-    meal: "Lunch / Dinner",
+    meal: `Lunch：<a class="inline-map-link" href="${daXiangMapUrl}" target="_blank" rel="noreferrer">大翔燒臘</a><br> Dinner：<a class="inline-map-link" href="${garlicRiceMapUrl}" target="_blank" rel="noreferrer">蒜頭飯</a>`,
     url: "https://docs.google.com/forms/d/e/1FAIpQLSem88mHbhIEAgjsYBTInL3zDEKk5Shd6_Io-tAf2cQbydEbrQ/viewform?usp=header"
   },
   {
     day: "6/9 Tue.",
     title: "Day 2 訂餐表單",
-    meal: "Lunch：捷食藝 · Dinner：澄三酒食",
+    meal: `Breakfast：<a class="inline-map-link" href="${isCafeMapUrl}" target="_blank" rel="noreferrer">I's Cafe&amp;Food</a> · Lunch：<a class="inline-map-link" href="${jieShiYiMapUrl}" target="_blank" rel="noreferrer">捷食藝</a>`,
     url: "https://docs.google.com/forms/d/e/1FAIpQLSfL8t5Y9Dw69sY_5Jc0UnBmcNlfgQz4bg4QfzEMOO5t6MxCIg/viewform?usp=header"
   },
   {
     day: "6/10 Wed.",
     title: "Day 3 訂餐表單",
-    meal: "Lunch",
+    meal: `Breakfast：<a class="inline-map-link" href="${isCafeMapUrl}" target="_blank" rel="noreferrer">I's Cafe&amp;Food</a> · Lunch：<a class="inline-map-link" href="${haoBaoMapUrl}" target="_blank" rel="noreferrer">好寶好食 The Fabulous / 椬式感</a>`,
     url: "https://docs.google.com/forms/d/e/1FAIpQLScQ5zP0Usi_0-twoXHMNwoFlHXsWr9wegC8NcQNvb1xbIq2wQ/viewform?usp=header"
   }
 ];
@@ -223,6 +230,23 @@ const campusGrid = document.querySelector("#campusGrid");
 const roomList = document.querySelector("#roomList");
 const mealList = document.querySelector("#mealList");
 const mealPreview = document.querySelector("#mealPreview");
+const mealSummary = document.querySelector("#mealSummary");
+
+function getSavedNote(key) {
+  try {
+    return localStorage.getItem(key) || "";
+  } catch (error) {
+    return "";
+  }
+}
+
+function saveDayNote(key, value) {
+  try {
+    localStorage.setItem(key, value);
+  } catch (error) {
+    // Notes stay editable even when a local file page cannot persist storage.
+  }
+}
 
 function tagClass(tag) {
   if (["早餐", "午餐", "晚餐", "餐飲"].includes(tag)) return "food";
@@ -258,16 +282,20 @@ function renderDay() {
     .map(item => renderCompactItem(item))
     .join("");
   timeline.innerHTML = day.items.map(item => renderTimelineItem(item)).join("");
-  dayNote.value = localStorage.getItem(day.noteKey) || "";
+  dayNote.value = getSavedNote(day.noteKey);
   renderDates();
 }
 
 function renderCompactItem(item) {
+  const title = item.url
+    ? `<a class="inline-map-link" href="${item.url}" target="_blank" rel="noreferrer">${item.title}</a>`
+    : item.title;
+
   return `
     <article class="mini-item">
       <span class="time">${item.time}</span>
       <div class="item-main">
-        <strong>${item.title}</strong>
+        <strong>${title}</strong>
         <p>${item.place}</p>
       </div>
     </article>
@@ -275,6 +303,9 @@ function renderCompactItem(item) {
 }
 
 function renderTimelineItem(item) {
+  const title = item.url
+    ? `<a class="inline-map-link" href="${item.url}" target="_blank" rel="noreferrer">${item.title}</a>`
+    : item.title;
   const tags = item.tags
     .map(tag => `<span class="tag ${tagClass(tag)}">${tag}</span>`)
     .join("");
@@ -282,7 +313,7 @@ function renderTimelineItem(item) {
     <article class="timeline-item">
       <span class="time">${item.time}</span>
       <div class="item-main">
-        <strong>${item.title}</strong>
+        <strong>${title}</strong>
         <p>${item.place}</p>
         <div class="tags">${tags}</div>
       </div>
@@ -332,15 +363,21 @@ function renderScheduleBoard() {
     .join("");
 
   const blocks = scheduleBlocks
-    .map(block => `
-      <section
-        class="schedule-block ${block.tone}"
-        style="grid-column:${block.day + 2}; grid-row:${block.start + 1} / ${block.end + 1}"
-      >
-        <strong>${block.title}</strong>
-        <span>${block.detail}</span>
-      </section>
-    `)
+    .map(block => {
+      const title = block.url
+        ? `<a class="inline-map-link" href="${block.url}" target="_blank" rel="noreferrer">${block.title}</a>`
+        : block.title;
+
+      return `
+        <section
+          class="schedule-block ${block.tone}"
+          style="grid-column:${block.day + 2}; grid-row:${block.start + 1} / ${block.end + 1}"
+        >
+          <strong>${title}</strong>
+          <span>${block.detail}</span>
+        </section>
+      `;
+    })
     .join("");
 
   scheduleBoard.innerHTML = `
@@ -466,6 +503,7 @@ function setTab(tab) {
   state.activeTab = tab;
   document.querySelectorAll(".panel").forEach(panel => panel.classList.remove("active"));
   document.querySelectorAll(".nav-item").forEach(item => item.classList.remove("active"));
+  mealSummary?.classList.toggle("hidden", tab === "meals");
 
   if (tab === "home") {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -482,11 +520,33 @@ function setTab(tab) {
   });
 }
 
-function closeMobileMenu() {
-  document.querySelector(".mobile-menu")?.removeAttribute("open");
+function setNavMenu(open) {
+  const menu = document.querySelector(".nav-menu");
+  const toggle = document.querySelector("#menuToggle");
+  menu?.classList.toggle("open", open);
+  toggle?.setAttribute("aria-expanded", String(open));
+
+  if (!open && menu?.contains(document.activeElement)) {
+    document.activeElement.blur();
+  }
 }
 
 document.addEventListener("click", event => {
+  const menuToggle = event.target.closest("#menuToggle");
+  if (menuToggle) {
+    const navMenu = menuToggle.closest(".nav-menu");
+    const desktopHoverMenu = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+    if (desktopHoverMenu) {
+      setTab("home");
+      setNavMenu(false);
+      return;
+    }
+
+    setNavMenu(!navMenu.classList.contains("open"));
+    return;
+  }
+
   const dayButton = event.target.closest("[data-day]");
   if (dayButton) {
     state.activeDay = Number(dayButton.dataset.day);
@@ -496,13 +556,13 @@ document.addEventListener("click", event => {
   const tabButton = event.target.closest("[data-tab]");
   if (tabButton) {
     setTab(tabButton.dataset.tab);
-    closeMobileMenu();
+    setNavMenu(false);
   }
 
   const jumpButton = event.target.closest("[data-tab-jump]");
   if (jumpButton) {
     setTab(jumpButton.dataset.tabJump);
-    closeMobileMenu();
+    setNavMenu(false);
   }
 
   const mapButton = event.target.closest("[data-map]");
@@ -510,6 +570,8 @@ document.addEventListener("click", event => {
     state.activeMap = Number(mapButton.dataset.map);
     renderMap();
   }
+
+  if (!event.target.closest(".nav-menu")) setNavMenu(false);
 });
 
 document.querySelector("#prevDay").addEventListener("click", () => {
@@ -523,7 +585,7 @@ document.querySelector("#nextDay").addEventListener("click", () => {
 });
 
 dayNote.addEventListener("input", () => {
-  localStorage.setItem(tripDays[state.activeDay].noteKey, dayNote.value);
+  saveDayNote(tripDays[state.activeDay].noteKey, dayNote.value);
 });
 
 renderDay();

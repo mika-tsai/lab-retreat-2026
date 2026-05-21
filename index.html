@@ -17,7 +17,23 @@
 
       <main>
         <section class="date-strip" aria-label="活動日期">
-          <div class="date-cards" id="dateCards"></div>
+          <div class="date-cards" id="dateCards">
+            <button class="date-card active" type="button" data-day="0">
+              <small>MON <sup>D1</sup></small>
+              <strong>08</strong>
+              <span>06月</span>
+            </button>
+            <button class="date-card" type="button" data-day="1">
+              <small>TUE <sup>D2</sup></small>
+              <strong>09</strong>
+              <span>06月</span>
+            </button>
+            <button class="date-card" type="button" data-day="2">
+              <small>WED <sup>D3</sup></small>
+              <strong>10</strong>
+              <span>06月</span>
+            </button>
+          </div>
           <div class="day-progress">
             <button class="round-button" type="button" id="prevDay" aria-label="前一天">‹</button>
             <div class="progress-track">
@@ -72,54 +88,12 @@
           <div class="mini-list" id="todayPreview"></div>
         </section>
 
-        <section class="summary-card meal-summary">
+        <section class="summary-card meal-summary" id="mealSummary">
           <div class="section-title">
             <h2>訂餐表單</h2>
             <button type="button" data-tab-jump="meals">查看三天</button>
           </div>
           <div class="meal-list compact" id="mealPreview"></div>
-        </section>
-
-        <details class="mobile-menu">
-          <summary>選單</summary>
-        </details>
-        <section class="menu-grid" aria-label="攻略功能">
-          <article class="menu-card" data-tab-jump="plans">
-            <span class="menu-icon">▣</span>
-            <p>Schedule</p>
-            <h3>每日時程表</h3>
-            <small>集合、會議、用餐、自由時間</small>
-          </article>
-          <article class="menu-card" data-tab-jump="map">
-            <span class="menu-icon">⌖</span>
-            <p>Map</p>
-            <h3>南院地圖</h3>
-            <small>會議室與學人會館</small>
-          </article>
-          <article class="menu-card" data-tab-jump="transport">
-            <span class="menu-icon">⇄</span>
-            <p>THSR</p>
-            <h3>高鐵參考</h3>
-            <small>南港/台北往台南</small>
-          </article>
-          <article class="menu-card" data-tab-jump="meals">
-            <span class="menu-icon">☰</span>
-            <p>Meal</p>
-            <h3>訂餐表單</h3>
-            <small>三天各一份 Google Form</small>
-          </article>
-          <article class="menu-card" data-tab-jump="activities">
-            <span class="menu-icon">◐</span>
-            <p>Activity</p>
-            <h3>Lab Activities</h3>
-            <small>6/9 下午活動安排</small>
-          </article>
-          <article class="menu-card" data-tab-jump="lodging">
-            <span class="menu-icon">⌂</span>
-            <p>Stay</p>
-            <h3>住宿設施</h3>
-            <small>入住資訊、房務、公共空間</small>
-          </article>
         </section>
 
         <section class="panel active" id="plansPanel">
@@ -141,14 +115,6 @@
             <p>只標示主要活動地點</p>
           </div>
           <div class="map-switch" id="mapSwitch"></div>
-          <figure class="campus-map">
-            <img src="./assets/south-campus-map-annotated-source.png" alt="中研院南院園區地圖，標示學人會館與研究大樓 110 會議室" />
-            <span class="map-ring residence"></span>
-            <span class="map-ring meeting"></span>
-            <figcaption class="map-label residence-label">學人會館</figcaption>
-            <figcaption class="map-label meeting-label">110 會議室</figcaption>
-          </figure>
-          <div class="campus-grid" id="campusGrid"></div>
           <div class="map-card">
             <div class="map-card-head">
               <span>Google Maps</span>
@@ -163,6 +129,14 @@
             ></iframe>
           </div>
           <div class="map-meta" id="mapMeta"></div>
+          <figure class="campus-map">
+            <img src="./assets/south-campus-map-annotated-source.png" alt="中研院南院園區地圖，標示學人會館與研究大樓 110 會議室" />
+            <span class="map-ring residence"></span>
+            <span class="map-ring meeting"></span>
+            <figcaption class="map-label residence-label">學人會館</figcaption>
+            <figcaption class="map-label meeting-label">110 會議室</figcaption>
+          </figure>
+          <div class="campus-grid" id="campusGrid"></div>
         </section>
 
         <section class="panel" id="transportPanel">
@@ -185,9 +159,6 @@
             <h2>每日訂餐表單</h2>
             <p>請依日期填寫</p>
           </div>
-          <div class="notice">
-            參加者請分別填寫三天的訂餐表單。表單連結補上後，下面的按鈕會直接開啟各日 Google Form。
-          </div>
           <div class="meal-list" id="mealList"></div>
         </section>
 
@@ -200,7 +171,9 @@
             <div class="activity-image" aria-label="奇美博物館埃及之王法老展覽主視覺"></div>
             <div class="activity-copy">
               <span>CHIMEI Museum Special Exhibition</span>
-              <h3>埃及之王：法老</h3>
+              <h3>
+                <a class="inline-map-link" href="https://www.chimeimuseum.org/special-exhibition/68a68f0a422a6/68a68fa1d1a3b" target="_blank" rel="noreferrer">埃及之王：法老</a>
+              </h3>
               <p>6/9 下午 Lab Activity 可安排前往奇美博物館特展。活動時段以當日行程表 13:00-18:00 為準。</p>
               <div class="activity-meta">
                 <div>
@@ -223,12 +196,12 @@
               <span>其他備案</span>
             </summary>
             <div class="backup-grid">
-              <a href="https://www.google.com/maps/search/?api=1&query=%E8%90%AC%E6%98%8C%E8%B5%B7%E7%BE%A9%20%E5%8F%B0%E5%8D%97" target="_blank" rel="noreferrer">
+              <a href="https://www.google.com/maps/place/%E8%90%AC%E6%98%8C%E8%B5%B7%E7%BE%A9/data=!4m2!3m1!1s0x346e768c1cdb6a8b:0x63cdd79f783bce5c?sa=X&ved=1t:242&ictx=111&cshid=1779284486987327" target="_blank" rel="noreferrer">
                 <span>Bar</span>
                 <strong>萬昌起義</strong>
                 <p>晚餐後或自由時間可作為小組續攤選項。點開 Google Maps。</p>
               </a>
-              <a href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E6%9D%B1%E5%A4%9C%E5%B8%82" target="_blank" rel="noreferrer">
+              <a href="https://www.google.com/maps/place/%E5%A4%A7%E6%9D%B1%E5%A4%9C%E5%B8%82/@22.9826132,120.2167663,17z/data=!3m1!4b1!4m6!3m5!1s0x346e769b79d2493d:0xfafc2c8a0c68d96d!8m2!3d22.9826132!4d120.2193412!16s%2Fg%2F155s6l9j?entry=ttu&g_ep=EgoyMDI2MDUxMy4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noreferrer">
                 <span>Night Market</span>
                 <strong>大東夜市</strong>
                 <p>適合想走輕鬆小吃路線的人，依當日營業與天氣決定。點開 Google Maps。</p>
@@ -257,12 +230,22 @@
           <span>⌖</span>
           <b>地圖</b>
         </button>
-        <button class="home-button" type="button" data-tab="home" aria-label="首頁">
-          <span>⌂</span>
-        </button>
-        <button class="nav-item" type="button" data-tab="transport">
-          <span>⇄</span>
-          <b>高鐵</b>
+        <div class="nav-menu">
+          <button class="home-button" type="button" id="menuToggle" aria-expanded="false" aria-controls="navFlyout" aria-label="首頁與選單">
+            <span>⌂</span>
+          </button>
+          <div class="nav-flyout" id="navFlyout" aria-label="全部功能">
+            <button type="button" data-tab="plans"><span>▣</span><b>每日時程</b></button>
+            <button type="button" data-tab="map"><span>⌖</span><b>南院地圖</b></button>
+            <button type="button" data-tab="meals"><span>☰</span><b>訂餐表單</b></button>
+            <button type="button" data-tab="activities"><span>◐</span><b>Lab Activities</b></button>
+            <button type="button" data-tab="transport"><span>⇄</span><b>高鐵參考</b></button>
+            <button type="button" data-tab="lodging"><span>⌂</span><b>住宿設施</b></button>
+          </div>
+        </div>
+        <button class="nav-item" type="button" data-tab="activities">
+          <span>◐</span>
+          <b>Activities</b>
         </button>
         <button class="nav-item" type="button" data-tab="meals">
           <span>☰</span>
