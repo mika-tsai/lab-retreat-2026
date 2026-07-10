@@ -794,7 +794,16 @@ h1,
 }
 
 .program-section .section-heading::before {
+  top: -8px;
+  left: 0;
+  z-index: 0;
   color: rgba(88, 191, 214, 0.1);
+  font-size: clamp(5.8rem, 9vw, 9.5rem);
+}
+
+.program-section .section-heading > * {
+  position: relative;
+  z-index: 1;
 }
 
 .program-section .eyebrow,
@@ -1406,6 +1415,13 @@ h1,
 
 .sponsor-card-bronze img {
   height: 150px;
+}
+
+.sponsor-card-apg img {
+  width: min(78%, 520px);
+  height: 190px;
+  margin: 0 auto;
+  object-fit: contain;
 }
 
 .sponsor-card h3 {
@@ -4237,6 +4253,11 @@ h1,
   .sponsor-card-silver img,
   .sponsor-card-bronze img {
     height: 130px;
+  }
+
+  .sponsor-card-apg img {
+    width: min(86%, 360px);
+    height: 140px;
   }
 
   .sponsor-logo-card {
