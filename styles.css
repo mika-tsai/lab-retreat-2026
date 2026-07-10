@@ -785,20 +785,21 @@ h1,
 .program-section {
   width: min(1680px, calc(100% - 220px));
   padding: clamp(104px, 6.8vw, 132px) clamp(34px, 4.8vw, 88px);
-  overflow: hidden;
+  overflow: visible;
   border-radius: var(--radius-lg);
   background:
-    radial-gradient(circle at 84% 0%, rgba(88, 191, 214, 0.22), transparent 24rem),
-    linear-gradient(145deg, #07182d 0%, var(--ink) 58%, #142b49 100%);
-  color: var(--paper);
+    radial-gradient(circle at 84% 0%, rgba(88, 191, 214, 0.13), transparent 24rem),
+    linear-gradient(180deg, rgba(217, 228, 239, 0.38), transparent 320px),
+    rgba(255, 253, 249, 0.54);
+  color: var(--ink);
 }
 
 .program-section .section-heading::before {
-  top: -8px;
-  left: 0;
-  z-index: 0;
-  color: rgba(88, 191, 214, 0.1);
-  font-size: clamp(5.8rem, 9vw, 9.5rem);
+  top: -56px;
+  left: -4px;
+  z-index: -1;
+  color: rgba(133, 158, 184, 0.36);
+  font-size: clamp(6rem, 13vw, 11rem);
 }
 
 .program-section .section-heading > * {
@@ -809,7 +810,7 @@ h1,
 .program-section .eyebrow,
 .program-section .section-heading > p:last-child,
 .program-note {
-  color: rgba(244, 247, 251, 0.64);
+  color: var(--muted);
 }
 
 .program-status {
@@ -821,7 +822,7 @@ h1,
   border: 1px solid rgba(88, 191, 214, 0.42);
   border-radius: 999px;
   background: rgba(88, 191, 214, 0.13);
-  color: var(--paper);
+  color: var(--ink);
   font-size: 0.78rem;
   font-weight: 900;
   letter-spacing: 0.12em;
@@ -6002,7 +6003,7 @@ button {
 }
 
 .program-section .eyebrow {
-  color: rgba(244, 247, 251, 0.72);
+  color: var(--muted);
 }
 
 .program-status {
